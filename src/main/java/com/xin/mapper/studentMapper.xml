@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 为这个mapper指定一个唯一的namespace，习惯上设置成包名+sql映射文件名 -->
+<mapper namespace="com.xin.mapper.StudentMapper">
+    <resultMap id="StudentResult" type="com.xin.entity.Student">
+        <id property="studId" column="stud_id"/>
+        <!-- 对于属性名和列名一致的，可以不列出，可有时也会为null ？？？ -->
+        <result property="name" column="name"/>
+        <result property="email" column="email"/>
+        <result property="dob" column="dob"/>
+        <result property="phone" column="phone"/>
+    </resultMap>
+
+    <resultMap id="AddressResult" type="com.xin.entity.Address">
+        <id property="addrId" column="addr_id"/>
+        <result property="street" column="street" />
+        <result property="city" column="city" />
+        <result property="state" column="state" />
+        <result property="zip" column="zip" />
+        <result property="country" column="country" />
+    </resultMap>
+    
+    <resultMap id="StudentWithAddressResult" type="com.xin.entity.Student" extends="StudentResult">
+        <association property="address" resultMap="AddressResult"/>
+    </resultMap>
+
+
+</mapper>

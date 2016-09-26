@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 为这个mapper指定一个唯一的namespace，习惯上设置成包名+sql映射文件名 -->
+<mapper namespace="com.xin.mapping.userMapper">
+    <!-- select标签 id属性值必须是唯一的 -->
+    <select id="getUser" parameterType="int" resultType="com.xin.entity.User">
+        select * from users where id=#{id}
+    </select>
+</mapper>
